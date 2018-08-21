@@ -1,13 +1,7 @@
-// Obtengo cada elemento
-const overlay = document.getElementById('overlay');
 const plants = document.getElementById('plants');
 const garden = document.getElementById('garden');
-const water = document.getElementById('water');
-const poison = document.getElementById('poison');
-const play = document.getElementById('play');
-const stop = document.getElementById('stop');
-let selection;
 
+let selection;
 // Objeto para los intervalos de tiempo para cada elemento
 let intervals = {
   seedWeed: null,
@@ -16,20 +10,37 @@ let intervals = {
 };
 
 let started = false;
+let points = 0;
 const max = 25;
 
 // Estado para la persistencia de datos
-const state = {
-  plants: [],
-  garden: []
-};
+let state = {};
+
+$(document).keypress(event => {
+  event.preventDefault();
+  switch (String.fromCharCode(event.charCode).toLowerCase()) {
+    case 'a':
+      $('#water').click();
+      break;
+    case 's':
+      $('#poison').click();
+      break;
+    case 'p':
+      $('#play').click();
+      break;
+    case 'o':
+      $('#stop').click();
+      break;
+  }
+});
 
 // Crear elementos a plantar
 function createGardenElement(type) {
   const element = document.createElement('img');
-  element.setAttribute('src', `images/${type}.svg`);
-  element.setAttribute('width', '100%');
-  element.setAttribute('class', type);
+  $(element)
+    .attr('src', `images/${type}.svg`)
+    .attr('width', '100%')
+    .attr('class', type);
   return element;
 }
 
@@ -39,8 +50,7 @@ function seedWeed() {
   // Verifico si la posicion no esta ocupada por alguna planta o agua para colocar poison
   if (!state.plants[position] && state.garden[position] !== 'water') {
     let element = createGardenElement('weed');
-    plants.children[position].innerHTML = '';
-    plants.children[position].appendChild(element);
+    $(plants.children[position]).html(element);
     state.plants[position] = 'weed';
   }
 }
@@ -53,8 +63,10 @@ function killWeed() {
     if (plant === 'weed' && state.garden[index] === 'poison') {
       state.plants[index] = undefined;
       state.garden[index] = undefined;
-      plants.children[index].innerHTML = '';
-      garden.children[index].innerHTML = '';
+      $(plants.children[index]).html('');
+      $(garden.children[index]).html('');
+      points += 1;
+      drawPoints();
     }
   });
 }
@@ -65,59 +77,79 @@ function growCarrots() {
   state.garden.forEach((resource, index) => {
     if (resource === 'water') {
       state.garden[index] = undefined;
-      garden.children[index].innerHTML = '';
+      $(garden.children[index]).html('');
       let element = createGardenElement('carrot');
-      plants.children[index].innerHTML = '';
-      plants.children[index].appendChild(element);
+      $(plants.children[index]).html(element);
       state.plants[index] = 'carrot';
     }
   });
 }
 
-// Colocare el elemento seleccionado(Water o Poison) en la grilla(overlay)
-overlay.addEventListener('click', (event) => {
-  if (started && selection) {
-    let position = parseInt(event.target.getAttribute('id'));
-    if (!state.garden[position] &&
-      (
-        (selection === 'poison' && state.plants[position] === 'weed') ||
-        (selection === 'water' && state.plants[position])
-      )
-    ){
-      let element = createGardenElement(selection);
-      garden.children[position].innerHTML = '';
-      garden.children[position].appendChild(element);
-      state.garden[position] = selection;
+function drawPoints() {
+  $('#score').html(points);
+}
+
+function draw() {
+  Object.getOwnPropertyNames(state).forEach(layer => {
+    state[layer].forEach(function (item, index) {
+      if (item) {
+        let element = createGardenElement(item);
+        $(`#${layer} .plot:nth-child(${index+1})`).html(element);
+      }
+    });
+  });
+}
+
+$('#overlay').click((event) => {
+  if (started) {
+    let position = parseInt($(event.target).attr('id'));
+    if (state.plants[position] === 'carrot') {
+      state.plants[position] = undefined;
+      $(plants.children[position]).html('');
+      points += 2;
+      drawPoints();
+    } else {
+      if (selection && !state.garden[position] &&
+        ((selection === 'poison' && state.plants[position] === 'weed') ||
+          (selection === 'water' && !state.plants[position]))
+      ) {
+        let element = createGardenElement(selection);
+        $(garden.children[position]).html(element);
+        state.garden[position] = selection;
+      }
     }
   }
 });
 
-// Seleccion de botones
-water.addEventListener('click', (event) => {
-  selection = 'water';
-  water.classList.add('selected');
-  poison.classList.remove('selected');
+$('.resources .control').click(function (event) {
+  selection = $(this).attr('id');
+  $('.resources .control').removeClass('selected');
+  $(this).addClass('selected');
 });
 
-poison.addEventListener('click', (event) => {
-  selection = 'poison';
-  poison.classList.add('selected');
-  water.classList.remove('selected');
-});
-
-// EVENTO INTERVALOS DE TIEMPO PARA CADA UNO DE LOS ELEMENTOS JUEGO EN MODO PLAY
-play.addEventListener('click', (event) => {
+$('#play').click(function (event) {
+  const localState = localStorage.getItem('state');
+  if (localState) {
+    state = JSON.parse(localState);
+  } else {
+    state = {
+      plants: [],
+      garden: []
+    };
+  }
+  draw();
   intervals.growCarrots = setInterval(growCarrots, 4000);
   intervals.seedWeed = setInterval(seedWeed, 1500);
   intervals.killWeed = setInterval(killWeed, 500);
-  play.classList.add('selected');
+  $(this).addClass('selected');
   started = true;
 });
- //  EVENTO INTERVALOS DE TIEMPO PARA CADA UNO DE LOS ELEMENTOS JUEGO EN MODO STOP
-stop.addEventListener('click', (event) => {
+
+$('#stop').click(function (event) {
   clearInterval(intervals.growCarrots);
   clearInterval(intervals.seedWeed);
   clearInterval(intervals.killWeed);
-  play.classList.remove('selected');
+  $('#play').removeClass('selected');
   started = false;
+  localStorage.setItem('state', JSON.stringify(state));
 });

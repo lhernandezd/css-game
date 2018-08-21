@@ -15,12 +15,19 @@
       </div>
     </div>
     <div id="instructions">
+      <div id="points">
+        <p> Points: <span id="score">0</span> </p>
+      </div>
+      <hr>
       <p>Game</p>
-      <button id="play" class="control">Play</button>
-      <button id="stop" class="control">Stop</button>
-      <p>Controls</p>
-      <button id="water" class="control">Water</button>
-      <button id="poison" class="control">Poison</button>
+      <button id="play" class="control">(P)lay</button>
+      <button id="stop" class="control">St(O)p</button>
+      <hr>
+      <div class="resources">
+        <p>Controls</p>
+        <button id="water" class="control">W(A)ter</button>
+        <button id="poison" class="control">Poi(S)on</button>
+      </div>
     </div>
   </section>
   <section id="view">
@@ -165,6 +172,7 @@
       </div>
     </div>
   </section>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/app.js"></script>
 </body>
  </html>
