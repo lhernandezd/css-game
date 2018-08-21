@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>CSS game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans|Autour+One|Source+Code+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/screen.css">
+</head>
+ <body>
+  <section id="sidebar">
+    <div class="header">
+      <div>
+        <h1 class="title">Playground</h1>
+      </div>
+    </div>
+    <p id="instructions">
+      <button>Execute</button>
+    </p>
+  </section>
+  <section id="view">
+    <div id="board">
+      <div id="overlay">
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+      </div>
+      <div id="plants">
+        <span class="plot">
+          <img src="images/carrots.svg" width="100%" class="carrot" />
+        </span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot">
+          <img src="images/carrots.svg" width="100%" class="carrot" />
+        </span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot">
+          <img src="images/weeds.svg" width="100%" id="weed" />
+        </span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+      </div>
+      <div id="garden">
+        <span class="plot">
+          <img src="images/water.svg" width="100%" class="water" />
+        </span>
+        <span class="plot">
+         </span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot">
+          <img src="images/water.svg" width="100%" class="water" />
+        </span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot">
+          <img src="images/water.svg" width="100%" class="water" />
+        </span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+      </div>
+      <div id="soil">
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+        <span class="plot"></span>
+      </div>
+    </div>
+  </section>
+</body>
+ </html>

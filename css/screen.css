@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+}
+ html,
+body {
+  min-height: 100%;
+}
+ body {
+  display: flex;
+  min-width: 600px;
+  margin: 0;
+  background-color: #5DA449;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'PT Sans', sans-serif;
+}
+ #sidebar {
+  width: 50%;
+  min-width: 300px;
+  position: relative;
+  padding: 2em;
+  font-size: 15px;
+}
+ #view {
+  min-height: 100vh;
+  padding: 1em;
+}
+ .header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -0.5rem;
+  justify-content: space-between;
+}
+ .title {
+  margin: 0.5rem 0 0;
+  text-transform: uppercase;
+  font-family: 'Autour One', cursive;
+  font-size: 30px;
+}
+ pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+ code {
+  padding: 0 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.8);
+}
+ li {
+  line-height: 1.5;
+}
+ a {
+  color: rgba(255, 255, 255, 0.7);
+}
+ a:hover {
+  color: #fff;
+}
+ .help {
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+ .img-next {
+  text-align: center;
+}
+ .img-next img {
+  display: inline-block;
+  margin: 1em;
+  width: 200px;
+  opacity: 0.9;
+}
+ .img-next img:hover {
+  opacity: 1;
+}
+ #editor {
+  position: relative;
+  margin-top: 2em;
+}
+ #editor,
+pre {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #aaa;
+}
+ #css {
+  height: 375px;
+  position: relative;
+  padding: 10px 10px 10px 40px;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+ .line-numbers {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px 6px;
+  text-align: right;
+  background-color: #999;
+  color: #D5D5D5;
+}
+ #code {
+  display: block;
+  width: calc(100% - 16px);
+  height: 24px;
+  margin-left: 16px;
+  border: none;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  overflow: auto;
+}
+ button {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  background-color: #D11606;
+  background-color: #DA931E;
+  border: none;
+  border-radius: 4px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+ button:active {
+  outline: none;
+}
+ button:not(.disabled):hover {
+  background-color: #F12D22;
+  background-color: #C97B00;
+}
+ #board {
+  position: relative;
+  width: 50vw;
+  height: 50vw;
+  min-width: 300px;
+  min-height: 300px;
+  overflow: hidden;
+  border: 12px solid #6D5720;
+  border-radius: 12px;
+}
+ #garden,
+#plants,
+#soil,
+#overlay {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+ #plants {
+  z-index: 30;
+}
+ #soil {
+  background-color: #523D1F;
+  overflow: hidden;
+}
+ #garden .plot {
+  width: 100%;
+  height: 100%;
+  background-color: #6F532A;
+  background-color: #836B32;
+  background-image: url('../images/dirt.svg');
+  background-size: calc(10vw - 4px);
+}
+ #overlay .plot {
+  z-index: 50;
+  background: none;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #665235;
+}
+ #garden {
+  z-index: 20;
+}
+ .hidden {
+  display: none;
+}
+ .reveal {
+  display: block;
+}
