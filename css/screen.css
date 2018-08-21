@@ -1,11 +1,13 @@
 * {
   box-sizing: border-box;
 }
- html,
+
+html,
 body {
   min-height: 100%;
 }
- body {
+
+body {
   display: flex;
   min-width: 600px;
   margin: 0;
@@ -13,77 +15,92 @@ body {
   color: rgba(255, 255, 255, 0.8);
   font-family: 'PT Sans', sans-serif;
 }
- #sidebar {
+
+#sidebar {
   width: 50%;
   min-width: 300px;
   position: relative;
   padding: 2em;
   font-size: 15px;
 }
- #view {
+
+#view {
   min-height: 100vh;
   padding: 1em;
 }
- .header {
+
+.header {
   display: flex;
   flex-wrap: wrap;
   margin-top: -0.5rem;
   justify-content: space-between;
 }
- .title {
+
+.title {
   margin: 0.5rem 0 0;
   text-transform: uppercase;
   font-family: 'Autour One', cursive;
   font-size: 30px;
 }
- pre {
+
+pre {
   margin: 0;
   white-space: pre-wrap;
 }
- code {
+
+code {
   padding: 0 2px;
   background-color: rgba(255, 255, 255, 0.2);
   font-family: 'Source Code Pro', monospace;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.8);
 }
- li {
+
+li {
   line-height: 1.5;
 }
- a {
+
+a {
   color: rgba(255, 255, 255, 0.7);
 }
- a:hover {
+
+a:hover {
   color: #fff;
 }
- .help {
+
+.help {
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
- .img-next {
+
+.img-next {
   text-align: center;
 }
- .img-next img {
+
+.img-next img {
   display: inline-block;
   margin: 1em;
   width: 200px;
   opacity: 0.9;
 }
- .img-next img:hover {
+
+.img-next img:hover {
   opacity: 1;
 }
- #editor {
+
+#editor {
   position: relative;
   margin-top: 2em;
 }
- #editor,
-pre {
+
+#editor, pre {
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
   line-height: 1.5;
   color: #aaa;
 }
- #css {
+
+#css {
   height: 375px;
   position: relative;
   padding: 10px 10px 10px 40px;
@@ -91,7 +108,8 @@ pre {
   border-radius: 4px;
   overflow: hidden;
 }
- .line-numbers {
+
+.line-numbers {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -101,7 +119,8 @@ pre {
   background-color: #999;
   color: #D5D5D5;
 }
- #code {
+
+#code {
   display: block;
   width: calc(100% - 16px);
   height: 24px;
@@ -113,7 +132,8 @@ pre {
   resize: none;
   overflow: auto;
 }
- button {
+
+button {
   display: inline-block;
   padding: 0.4em 0.8em;
   background-color: #D11606;
@@ -132,14 +152,22 @@ pre {
   -webkit-appearance: none;
   appearance: none;
 }
- button:active {
+
+button:active {
   outline: none;
 }
- button:not(.disabled):hover {
+
+button:not(.disabled):hover {
   background-color: #F12D22;
   background-color: #C97B00;
 }
- #board {
+
+button.selected {
+  background-color: lightgreen;
+  color: black;
+}
+
+#board {
   position: relative;
   width: 50vw;
   height: 50vw;
@@ -149,10 +177,8 @@ pre {
   border: 12px solid #6D5720;
   border-radius: 12px;
 }
- #garden,
-#plants,
-#soil,
-#overlay {
+
+#garden, #plants,m#soil, #overlay {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
@@ -162,14 +188,18 @@ pre {
   width: 100%;
   height: 100%;
 }
- #plants {
+
+ 
+#plants {
   z-index: 30;
 }
- #soil {
+
+#soil {
   background-color: #523D1F;
   overflow: hidden;
 }
- #garden .plot {
+
+#garden .plot {
   width: 100%;
   height: 100%;
   background-color: #6F532A;
@@ -177,17 +207,21 @@ pre {
   background-image: url('../images/dirt.svg');
   background-size: calc(10vw - 4px);
 }
- #overlay .plot {
+
+#overlay .plot {
   z-index: 50;
   background: none;
   box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #665235;
 }
- #garden {
+
+#garden {
   z-index: 20;
 }
- .hidden {
+
+.hidden {
   display: none;
 }
- .reveal {
+
+.reveal {
   display: block;
 }
